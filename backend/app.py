@@ -372,6 +372,31 @@ def test_clean():
     return jsonify({"code": 0, "msg": "测试数据已清理"})
 
 
+# ---------- 前端静态托管（单容器/单进程部署用） ----------
+# 本地开发仍走 Vite dev server(:5173)；托管部署（PythonAnywhere 等）时
+# 由 Flask 直接服务 frontend/dist 构建产物，/api 路由优先级更高不受影响。
+import os
+from flask import send_from_directory
+
+_DIST = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "frontend", "dist"))
+_PUBLIC = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "frontend", "public"))
+
+
+@app.route("/images/<path:p>")
+def images(p):
+    # 商品图片直接复用 public/images（dist 里不再重复拷贝 32MB）
+    return send_from_directory(os.path.join(_PUBLIC, "images"), p)
+
+
+@app.route("/")
+@app.route("/<path:path>")
+def spa(path=""):
+    full = os.path.normpath(os.path.join(_DIST, path))
+    if path and full.startswith(_DIST) and os.path.isfile(full):
+        return send_from_directory(_DIST, path)
+    return send_from_directory(_DIST, "index.html")
+
+
 if __name__ == "__main__":
     db.init_db()
     app.run(host="127.0.0.1", port=5000, debug=True)

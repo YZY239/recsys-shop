@@ -7,8 +7,12 @@ venv/
 
 # ---- Node / 前端 ----
 node_modules/
-frontend/dist/
 *.log
+# dist 构建产物入库（PythonAnywhere 等托管直接用），images 复用 public 不重复入库
+frontend/dist/*
+!frontend/dist/assets
+!frontend/dist/index.html
+!frontend/dist/favicon.svg
 
 # ---- 数据与运行时产物（可由离线脚本重新生成） ----
 backend/data/recsys.db
