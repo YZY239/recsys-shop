@@ -3,6 +3,9 @@
 > 严格对照《完整推荐系统.pdf》作业要求实现的 **Flask + Vue3 前后端分离**推荐系统。
 > 3 个演示账号各自看到不同的个性化推荐；点击商品 → 详情页相似推荐 → 相似商品实时插入推荐流 → 无限下滑分页加载；附带用户中心、我的收藏、购物车完整功能。
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/YZY239/recsys-shop)
+> Fork 本仓库后点击上方按钮，Render 自动读取根目录 `render.yaml` 完成部署，全程无需填配置（免费档）。
+
 ---
 
 ## 一、项目结构
