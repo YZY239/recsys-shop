@@ -1,0 +1,16 @@
+=== 数据清洗报告 ===
+数据源: E:\1\diversity\recsys-shop\backend\data\train.csv
+原始行数: 332848
+剔除行数: 10454
+  - no_customer: 0
+  - no_stock: 0
+  - bad_qty: 0
+  - bad_price: 0
+  - non_product_code: 1122
+  - duplicate: 9332
+有效交互对(用户x商品): 230364
+有效用户数: 3913
+有效商品数: 3939
+推荐候选集: 每用户 Top50，共 126635 条，覆盖 3913 用户
+输出: E:\1\diversity\recsys-shop\backend\data\user_recs_clean.csv
+商品表 products_clean.csv 已检查: 3542 个商品，含中文名与类别，可直接使用

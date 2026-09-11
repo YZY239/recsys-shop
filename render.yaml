@@ -1,0 +1,11 @@
+# Render Blueprint —— 一键部署定义（配合 "Deploy to Render" 按钮使用）
+# 其他人 fork 你的 GitHub 仓库后，点按钮即可按此文件自动创建服务，无需手填配置
+services:
+  - type: web
+    name: recsys-shop
+    runtime: docker
+    dockerfilePath: ./render/Dockerfile
+    dockerContext: ./
+    plan: free
+    region: singapore
+    healthCheckPath: /

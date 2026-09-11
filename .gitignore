@@ -1,0 +1,25 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# ---- Node / 前端 ----
+node_modules/
+frontend/dist/
+*.log
+
+# ---- 数据与运行时产物（可由离线脚本重新生成） ----
+backend/data/recsys.db
+backend/server.log
+backend/data/eval_report.txt
+
+# 大数据原始文件按需决定是否入库（train.csv 约 30MB）
+# data/train.csv
+
+# ---- IDE / 系统 ----
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

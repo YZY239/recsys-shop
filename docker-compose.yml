@@ -1,0 +1,19 @@
+services:
+  backend:
+    build: ./backend
+    container_name: recsys-backend
+    # 依赖数据库与推荐产物的 CSV 已在 backend/data 下，随镜像/挂载带入
+    volumes:
+      - ./backend/data:/app/data
+    expose:
+      - "5000"
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: recsys-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
